@@ -8,7 +8,6 @@ import Center from '../pages/center/center'
 import Storeup from '../pages/storeup/list'
 import News from '../pages/news/news-list'
 import NewsDetail from '../pages/news/news-detail'
-import payList from '../pages/pay'
 
 import wanjiaList from '../pages/wanjia/list'
 import wanjiaDetail from '../pages/wanjia/detail'
@@ -88,10 +87,6 @@ export default new VueRouter({
 				{
 					path: 'center',
 					component: Center,
-				},
-				{
-					path: 'pay',
-					component: payList,
 				},
 				{
 					path: 'storeup',

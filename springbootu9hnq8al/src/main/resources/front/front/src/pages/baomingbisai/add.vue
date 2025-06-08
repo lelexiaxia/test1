@@ -82,31 +82,12 @@
 			</el-form-item>
 		</el-form>
 
-		<!-- 支付弹窗 -->
-		<el-dialog
-			title="支付报名费用"
-			:visible.sync="payDialogVisible"
-			width="500px"
-			:close-on-click-modal="false"
-			:close-on-press-escape="false"
-			:show-close="false">
-			<simple-pay 
-				:amount="ruleForm.baomingfei" 
-				:remark="'比赛报名费：' + ruleForm.bisaimingcheng"
-				@payment-success="handlePaymentSuccess"
-				@payment-cancel="handlePaymentCancel">
-			</simple-pay>
-		</el-dialog>
 	</div>
 </template>
 
 <script>
-import SimplePay from '@/vue/simple-pay.vue'
 
 export default {
-	components: {
-		SimplePay
-	},
 	data() {
 		return {
 			id: '',
