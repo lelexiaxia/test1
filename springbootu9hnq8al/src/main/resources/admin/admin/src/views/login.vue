@@ -34,8 +34,9 @@
 						<div class="login-btn1">
 							<el-button v-if="loginType==1" type="primary" @click="login()" class="loginInBt">登录</el-button>
 						</div>
-						<div class="login-btn2">
-						</div>
+                                                <div class="login-btn2">
+                                                        <el-button class="register" @click="register('users')">注册账号</el-button>
+                                                </div>
 						<div class="login-btn3">
 						</div>
 					</div>
