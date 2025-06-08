@@ -4,10 +4,29 @@
 			<el-form v-if="pageFlag=='register'" ref="ruleForm" class="rgs-form animate__animated animate__" :model="ruleForm" :rules="rules">
 				<div class="rgs-form2">
 					<div class="title">基于Vue的真人CS活动管理系统设计与实现</div>
-					<el-form-item class="list-item" v-if="tableName=='wanjia'">
-						<div class="lable" :class="changeRules('wanjiazhanghao')?'required':''">玩家账号：</div>
-						<el-input  v-model="ruleForm.wanjiazhanghao"  autocomplete="off" placeholder="玩家账号"  type="text"  />
-					</el-form-item>
+                                        <el-form-item class="list-item" v-if="tableName=='users'">
+                                                <div class="lable" :class="changeRules('username')?'required':''">用户名：</div>
+                                                <el-input  v-model="ruleForm.username"  autocomplete="off" placeholder="用户名"  type="text"  />
+                                        </el-form-item>
+                                        <el-form-item class="list-item" v-if="tableName=='users'">
+                                                <div class="lable" :class="changeRules('password')?'required':''">密码：</div>
+                                                <el-input  v-model="ruleForm.password"  autocomplete="off" placeholder="密码"  type="password"  />
+                                        </el-form-item>
+                                        <el-form-item class="list-item" v-if="tableName=='users'">
+                                                <div class="lable" :class="changeRules('password')?'required':''">确认密码：</div>
+                                                <el-input  v-model="ruleForm.password2" autocomplete="off" placeholder="确认密码" type="password" />
+                                        </el-form-item>
+                                        <el-form-item class="list-item" v-if="tableName=='users'">
+                                                <div class="lable" :class="changeRules('role')?'required':''">角色：</div>
+                                                <el-select v-model="ruleForm.role" placeholder="请选择角色" >
+                                                        <el-option label="管理员" value="管理员"></el-option>
+                                                        <el-option label="玩家" value="玩家"></el-option>
+                                                </el-select>
+                                        </el-form-item>
+                                        <el-form-item class="list-item" v-if="tableName=='wanjia'">
+                                                <div class="lable" :class="changeRules('wanjiazhanghao')?'required':''">玩家账号：</div>
+                                                <el-input  v-model="ruleForm.wanjiazhanghao"  autocomplete="off" placeholder="玩家账号"  type="text"  />
+                                        </el-form-item>
 					<el-form-item class="list-item" v-if="tableName=='wanjia'">
 						<div class="lable" :class="changeRules('mima')?'required':''">密码：</div>
 						<el-input  v-model="ruleForm.mima"  autocomplete="off" placeholder="密码"  type="password"  />
@@ -81,25 +100,37 @@ export default {
 			
 			let table = this.$storage.get("loginTable");
 			this.tableName = table;
-			if(this.tableName=='wanjia'){
-				this.ruleForm = {
-					wanjiazhanghao: '',
-					mima: '',
-					wanjiaxingming: '',
-					xingbie: '',
-					touxiang: '',
-					lianxidianhua: '',
-				}
-			}
-			if ('wanjia' == this.tableName) {
-				this.rules.wanjiazhanghao = [{ required: true, message: '请输入玩家账号', trigger: 'blur' }]
-			}
-			if ('wanjia' == this.tableName) {
-				this.rules.mima = [{ required: true, message: '请输入密码', trigger: 'blur' }]
-			}
-			if ('wanjia' == this.tableName) {
-				this.rules.wanjiaxingming = [{ required: true, message: '请输入玩家姓名', trigger: 'blur' }]
-			}
+                        if(this.tableName=='wanjia'){
+                                this.ruleForm = {
+                                        wanjiazhanghao: '',
+                                        mima: '',
+                                        wanjiaxingming: '',
+                                        xingbie: '',
+                                        touxiang: '',
+                                        lianxidianhua: '',
+                                }
+                        }
+                        if(this.tableName=='users'){
+                                this.ruleForm = {
+                                        username: '',
+                                        password: '',
+                                        password2: '',
+                                        role: '管理员'
+                                }
+                        }
+                        if ('wanjia' == this.tableName) {
+                                this.rules.wanjiazhanghao = [{ required: true, message: '请输入玩家账号', trigger: 'blur' }]
+                        }
+                        if ('wanjia' == this.tableName) {
+                                this.rules.mima = [{ required: true, message: '请输入密码', trigger: 'blur' }]
+                        }
+                        if ('wanjia' == this.tableName) {
+                                this.rules.wanjiaxingming = [{ required: true, message: '请输入玩家姓名', trigger: 'blur' }]
+                        }
+                        if ('users' == this.tableName) {
+                                this.rules.username = [{ required: true, message: '请输入用户名', trigger: 'blur' }]
+                                this.rules.password = [{ required: true, message: '请输入密码', trigger: 'blur' }]
+                        }
 			this.wanjiaxingbieOptions = "男,女".split(',')
 		}
 	},
@@ -131,18 +162,30 @@ export default {
 		// 注册
 		login() {
 			var url=this.tableName+"/register";
-			if((!this.ruleForm.wanjiazhanghao) && `wanjia` == this.tableName){
-				this.$message.error(`玩家账号不能为空`);
-				return
-			}
-			if((!this.ruleForm.mima) && `wanjia` == this.tableName){
-				this.$message.error(`密码不能为空`);
-				return
-			}
-			if((this.ruleForm.mima!=this.ruleForm.mima2) && `wanjia` == this.tableName){
-				this.$message.error(`两次密码输入不一致`);
-				return
-			}
+                        if((!this.ruleForm.wanjiazhanghao) && `wanjia` == this.tableName){
+                                this.$message.error(`玩家账号不能为空`);
+                                return
+                        }
+                        if((!this.ruleForm.mima) && `wanjia` == this.tableName){
+                                this.$message.error(`密码不能为空`);
+                                return
+                        }
+                        if((this.ruleForm.mima!=this.ruleForm.mima2) && `wanjia` == this.tableName){
+                                this.$message.error(`两次密码输入不一致`);
+                                return
+                        }
+                        if((!this.ruleForm.username) && `users` == this.tableName){
+                                this.$message.error(`用户名不能为空`);
+                                return
+                        }
+                        if((!this.ruleForm.password) && `users` == this.tableName){
+                                this.$message.error(`密码不能为空`);
+                                return
+                        }
+                        if((this.ruleForm.password!=this.ruleForm.password2) && `users` == this.tableName){
+                                this.$message.error(`两次密码输入不一致`);
+                                return
+                        }
 			if((!this.ruleForm.wanjiaxingming) && `wanjia` == this.tableName){
 				this.$message.error(`玩家姓名不能为空`);
 				return

@@ -93,7 +93,13 @@ public class BaomingbisaiEntity<T> implements Serializable {
 	 * 玩家姓名
 	 */
 					
-	private String wanjiaxingming;
+        private String wanjiaxingming;
+
+        /**
+         * 支付金额
+         */
+
+        private java.math.BigDecimal baomingjine;
 	
 	/**
 	 * 报名备注
@@ -213,9 +219,17 @@ public class BaomingbisaiEntity<T> implements Serializable {
 	/**
 	 * 获取：玩家姓名
 	 */
-	public String getWanjiaxingming() {
-		return wanjiaxingming;
-	}
+        public String getWanjiaxingming() {
+                return wanjiaxingming;
+        }
+
+        public java.math.BigDecimal getBaomingjine() {
+                return baomingjine;
+        }
+
+        public void setBaomingjine(java.math.BigDecimal baomingjine) {
+                this.baomingjine = baomingjine;
+        }
 	/**
 	 * 设置：报名备注
 	 */
