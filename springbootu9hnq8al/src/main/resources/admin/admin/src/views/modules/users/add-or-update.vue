@@ -17,10 +17,19 @@
 				<el-form-item class="input" v-if="type!='info'"  label="密码" prop="password" >
 					<el-input v-model="ruleForm.password" placeholder="密码" clearable  :readonly="ro.password"></el-input>
 				</el-form-item>
-				<el-form-item v-else class="input" label="密码" prop="password" >
-					<el-input v-model="ruleForm.password" placeholder="密码" readonly></el-input>
-				</el-form-item>
-			</template>
+                                <el-form-item v-else class="input" label="密码" prop="password" >
+                                        <el-input v-model="ruleForm.password" placeholder="密码" readonly></el-input>
+                                </el-form-item>
+                                <el-form-item class="input" v-if="type!='info'" label="角色" prop="role" >
+                                        <el-select v-model="ruleForm.role" placeholder="角色" >
+                                                <el-option label="管理员" value="管理员" />
+                                                <el-option label="玩家" value="玩家" />
+                                        </el-select>
+                                </el-form-item>
+                                <el-form-item v-else class="input" label="角色" prop="role" >
+                                        <el-input v-model="ruleForm.role" placeholder="角色" readonly></el-input>
+                                </el-form-item>
+                        </template>
 			<el-form-item class="btn">
 				<el-button class="btn3"  v-if="type!='info'" type="success" @click="onSubmit">
 					<span class="icon iconfont icon-xihuan"></span>
@@ -54,10 +63,11 @@
 					role : false,
 				},
 			
-				ruleForm: {
-					username: '',
-					password: '',
-				},
+                                ruleForm: {
+                                        username: '',
+                                        password: '',
+                                        role: '管理员'
+                                },
 
 				rules: {
 					username: [
@@ -66,8 +76,9 @@
 					password: [
 						{ required: true, message: '密码不能为空', trigger: 'blur' },
 					],
-					role: [
-					],
+                                        role: [
+                                                { required: true, message: '角色不能为空', trigger: 'blur' },
+                                        ],
 				},
 			};
 		},

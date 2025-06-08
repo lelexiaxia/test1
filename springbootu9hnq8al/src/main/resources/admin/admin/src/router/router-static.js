@@ -9,7 +9,6 @@ import Board from '@/views/board'
 import Login from '@/views/login'
 import NotFound from '@/views/404'
 import UpdatePassword from '@/views/update-password'
-import pay from '@/views/pay'
 import register from '@/views/register'
 import center from '@/views/center'
 	import news from '@/views/modules/news/list'
@@ -50,12 +49,7 @@ export const routes = [{
 		name: '修改密码',
 		component: UpdatePassword,
 		meta: {icon:'', title:'updatePassword'}
-	}, {
-		path: '/pay',
-		name: '支付',
-		component: pay,
-		meta: {icon:'', title:'pay'}
-	}, {
+        }, {
 		path: '/center',
 		name: '个人信息',
 		component: center,
