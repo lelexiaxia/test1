@@ -63,10 +63,16 @@
 				<el-form-item class="input" v-if="type!='info'"  label="玩家姓名" prop="wanjiaxingming" >
 					<el-input v-model="ruleForm.wanjiaxingming" placeholder="玩家姓名" clearable  :readonly="ro.wanjiaxingming"></el-input>
 				</el-form-item>
-				<el-form-item v-else class="input" label="玩家姓名" prop="wanjiaxingming" >
-					<el-input v-model="ruleForm.wanjiaxingming" placeholder="玩家姓名" readonly></el-input>
-				</el-form-item>
-			</template>
+                                <el-form-item v-else class="input" label="玩家姓名" prop="wanjiaxingming" >
+                                        <el-input v-model="ruleForm.wanjiaxingming" placeholder="玩家姓名" readonly></el-input>
+                                </el-form-item>
+                                <el-form-item class="input" v-if="type!='info'" label="支付金额" prop="baomingjine" >
+                                        <el-input v-model="ruleForm.baomingjine" placeholder="支付金额" clearable :readonly="ro.baomingjine"></el-input>
+                                </el-form-item>
+                                <el-form-item v-else class="input" label="支付金额" prop="baomingjine" >
+                                        <el-input v-model="ruleForm.baomingjine" placeholder="支付金额" readonly></el-input>
+                                </el-form-item>
+                        </template>
 			<el-form-item v-if="type!='info'"  label="报名备注" prop="baomingbeizhu" >
 				<editor 
 					style="min-width: 200px; max-width: 600px;"
@@ -112,8 +118,9 @@
 					bisaididian : false,
 					baomingshijian : false,
 					wanjiazhanghao : false,
-					wanjiaxingming : false,
-					baomingbeizhu : false,
+                                        wanjiaxingming : false,
+                                        baomingjine : false,
+                                        baomingbeizhu : false,
 					crossuserid : false,
 					crossrefid : false,
 				},
@@ -125,8 +132,9 @@
 					bisaididian: '',
 					baomingshijian: '',
 					wanjiazhanghao: '',
-					wanjiaxingming: '',
-					baomingbeizhu: '',
+                                        wanjiaxingming: '',
+                                        baomingjine: '',
+                                        baomingbeizhu: '',
 					crossuserid: '',
 					crossrefid: '',
 				},
@@ -144,10 +152,12 @@
 					],
 					wanjiazhanghao: [
 					],
-					wanjiaxingming: [
-					],
-					baomingbeizhu: [
-					],
+                                        wanjiaxingming: [
+                                        ],
+                                        baomingjine: [
+                                        ],
+                                        baomingbeizhu: [
+                                        ],
 					crossuserid: [
 					],
 					crossrefid: [
