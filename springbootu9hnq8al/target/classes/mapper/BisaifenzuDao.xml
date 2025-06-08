@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.BisaifenzuDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.entity.BisaifenzuEntity" id="bisaifenzuMap">
+        <result property="bisaimingcheng" column="bisaimingcheng"/>
+        <result property="bisaileixing" column="bisaileixing"/>
+        <result property="bisaitupian" column="bisaitupian"/>
+        <result property="bisaididian" column="bisaididian"/>
+        <result property="fenzushijian" column="fenzushijian"/>
+        <result property="wanjiazhanghao" column="wanjiazhanghao"/>
+        <result property="wanjiaxingming" column="wanjiaxingming"/>
+        <result property="duizhanxuanshou" column="duizhanxuanshou"/>
+        <result property="fenpeibeizhu" column="fenpeibeizhu"/>
+    </resultMap>
+
+	<select id="selectListVO"
+		resultType="com.entity.vo.BisaifenzuVO" >
+		SELECT * FROM bisaifenzu  bisaifenzu         
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectVO"
+		resultType="com.entity.vo.BisaifenzuVO" >
+		SELECT  bisaifenzu.* FROM bisaifenzu  bisaifenzu 	
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultType="com.entity.view.BisaifenzuView" >
+
+		SELECT  bisaifenzu.* FROM bisaifenzu  bisaifenzu 	        
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectView"
+		resultType="com.entity.view.BisaifenzuView" >
+		SELECT * FROM bisaifenzu  bisaifenzu <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+
+
+</mapper>
