@@ -83,13 +83,20 @@
 							{{scope.row.wanjiazhanghao}}
 						</template>
 					</el-table-column>
-					<el-table-column :resizable='true' :sortable='true'  
-						prop="wanjiaxingming"
-						label="玩家姓名">
-						<template slot-scope="scope">
-							{{scope.row.wanjiaxingming}}
-						</template>
-					</el-table-column>
+                                        <el-table-column :resizable='true' :sortable='true'
+                                                prop="wanjiaxingming"
+                                                label="玩家姓名">
+                                                <template slot-scope="scope">
+                                                        {{scope.row.wanjiaxingming}}
+                                                </template>
+                                        </el-table-column>
+                                        <el-table-column :resizable='true' :sortable='true'
+                                                prop="baomingjine"
+                                                label="支付金额">
+                                                <template slot-scope="scope">
+                                                        {{scope.row.baomingjine}}
+                                                </template>
+                                        </el-table-column>
 					<el-table-column width="300" label="操作">
 						<template slot-scope="scope">
 							<el-button class="view" v-if=" isAuth('baomingbisai','查看')" type="success" @click="addOrUpdateHandler(scope.row.id,'info')">
